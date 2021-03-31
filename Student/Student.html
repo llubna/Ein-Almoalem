@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+        
+        <div>
+            <input placeholder="Enter username..."
+                    type="text"
+                    id="username-input" /><br>
+            <button onclick="joinCall()">Join Call</button>
+        </div>
+        <div id="video-call-div">
+            <video muted id="local-video" autoplay></video>
+            <video id="remote-video" autoplay></video>
+            <div class="call-action-div">
+                <button onclick="muteVideo()">Mute Video</button>
+                <button onclick="muteAudio()">Mute Audio</button>   
+                <!-- <div><button id="startbutton" >Take photo</button></div> -->
+                <canvas id="canvas"></canvas>
+                <div class="output">
+                 <img id="photo" alt="The screen capture will appear in this box.">
+        <!-- <script deffr src="face-api.min.js"></script>             -->
+        <script src="./Student.js"></script>
+    </body>
+
+</html>

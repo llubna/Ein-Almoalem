@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../style.css">
+    </head>
+    <body>
+        <script src= "https://www.webrtc-experiment.com/MultiStreamsMixer.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
+        integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+        <div>
+            <input placeholder="Enter username..."
+                    type="text"
+                    id="username-input" /><br>
+            <button onclick="sendUsername()">Send</button>
+            <button onclick="startCall()">Start Call</button>
+        </div>
+        <div id="video-call-div">
+            <video muted id="local-video" autoplay></video>
+            <video id="remote-video" autoplay></video>
+            <div class="call-action-div">
+                <button onclick="muteVideo()">Mute Video</button>
+                <button onclick="muteAudio()">Mute Audio</button>
+                <button id="start">Start Capture</button>&nbsp;<button id="stop">Stop Capture</button>
+            </div>
+        </div>
+        <!-- <div id="capture_shear">
+            <video muted id="local-video" autoplay></video>
+            <video id="remote-video" autoplay></video>
+            <div class="call-action-div">
+                <button onclick="muteVideo()">Mute Video</button>
+                <button onclick="muteAudio()">Mute Audio</button>
+                <button id="start">Start Capture</button>&nbsp;<button id="stop">Stop Capture</button>
+            </div> -->
+        </div>
+        <script type="text/javascript" charset="utf-8">
+//          console.log("test");
+//             // var cors = require('cors')
+
+//             var connectionOptions =  {
+//             "force new connection" : true,
+//             "reconnectionAttempts": "Infinity", 
+//             "timeout" : 10000,                  
+//             "transports" : ["socket"],
+//             "Access-Control-Allow-Origin":"*"
+//         };
+//             // var socket = io();
+//             var socket = io("http://localhost:5000/" ,connectionOptions,
+//             // {
+// //                  extraHeaders: {
+// //                 Origin: "Access-Control-Allow-Origin:*"
+// //   }
+// );
+//             socket.on('connect', function () {
+//                 console.log("connected")
+//                 socket.emit('my event', { data: 'I\'m connected!' });
+//             });
+
+//         socket.on('my response', function(msg) {
+//              alert('Received: ' + msg.data)
+//             // $('#log').append('<p>Received: ' + msg.data + '</p>');
+//             console.log("connected");
+//             console.log(msg.data);
+//         });
+    
+        </script>
+        <script src="./Teacher.js"></script>
+    </body>
+
+</html>

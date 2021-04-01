@@ -36,6 +36,9 @@ let peerConn
 let dataChannel
 function startCall() {
 
+    document.getElementById("first-div")
+    .style.display = "none"
+
     document.getElementById("video-call-div")
     .style.display = "inline"
 

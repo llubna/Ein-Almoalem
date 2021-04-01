@@ -54,6 +54,9 @@ function joinCall() {
 
     username = document.getElementById("username-input").value
 
+    document.getElementById("first-div")
+    .style.display = "none"
+
     document.getElementById("video-call-div")
     .style.display = "inline"
 

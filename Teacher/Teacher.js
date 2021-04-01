@@ -61,16 +61,26 @@ function startCall() {
                 }
             ]
         }
-
+       
         peerConn = new RTCPeerConnection(configuration)
         dataChannel = peerConn.createDataChannel("datachannel")
         peerConn.addEventListener('datachannel', e => {
             const channel = e.channel;
             channel.onmessage = event => {
-              alert('Received: ' + event.data)
+
+              $.bootstrapGrowl('Received in bootstrapGrowl : ' + event.data, {
+                type: 'info', // (null, 'info', 'error', 'success')
+                offset: {from: 'top', amount: 250}, // 'top', or 'bottom'
+                align: 'right', // ('left', 'right', or 'center')
+                //width: 250, // (integer, or 'auto')
+                delay: 20000,
+                allow_dismiss: true,
+                stackup_spacing: 10 // spacing between consecutively stacked growls.
+              });
+            
               console.log('received', event.data);}
             })
-        
+              
         peerConn.addStream(localStream)
 
         peerConn.onaddstream = (e) => {

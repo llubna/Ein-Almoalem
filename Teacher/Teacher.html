@@ -2,11 +2,17 @@
 <html>
     <head>
         <link rel="stylesheet" href="../style.css">
+        <!-- for notifcation -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
     <body>
         <script src= "https://www.webrtc-experiment.com/MultiStreamsMixer.js"></script>
         <script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"
         integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+          <!-- for notifcation -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <div>
             <input placeholder="Enter username..."
                     type="text"
@@ -22,7 +28,11 @@
                 <button onclick="muteAudio()">Mute Audio</button>
                 <button id="start">Start Capture</button>&nbsp;<button id="stop">Stop Capture</button>
             </div>
+            <div id="Result-Section">
+            <h3>Result will appear here:</h3>
+            </div>
         </div>
+        
         <!-- <div id="capture_shear">
             <video muted id="local-video" autoplay></video>
             <video id="remote-video" autoplay></video>

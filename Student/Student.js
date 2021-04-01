@@ -131,7 +131,7 @@ function setup(){
           
         }
         var interval;
-        interval = setInterval(takepicture, 60000);
+        interval = setInterval(takepicture, 40000);
         takepicture();
         ev.preventDefault();
     }, false);
@@ -187,7 +187,7 @@ async function SendPhoto(data){
     // const dc = pc.createDataChannel("some label string");
     // wait for this to be open, e.g. by adding an event listener, then call send
     StudentName =document.getElementById("Student-Name").value
-    dataChannel.send(StudentName+":"+result);
+    dataChannel.send(StudentName+" : "+result);
     // let obj = {
     //     "message": msg,
     //     "timestamp": new Date()

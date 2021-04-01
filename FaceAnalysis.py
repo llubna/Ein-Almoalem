@@ -37,40 +37,65 @@ CORS(app)
 # def test_disconnect():
 #     print('Client disconnected')
 
+ # # 	Weights from Sharma et.al. (2019)
+        # Neutral	0.9
+        # Happy 	0.6
+        # Surprised	0.6
+        # Sad	    0.3
+
+        # Anger	    0.25
+        # Fearful	0.3
+        # 0: 'Angry', 1: 'Fear', 2: 'Happy', 3: 'Sad', 4: 'Surprised', 5: 'Neutral'}
+
+
+
 @app.route("/analyze", methods=["GET", "POST"])
 def analyze():
     print("analyzing image..")
     # try:
     with rq.urlopen(request.data.decode("utf8")) as response:
-        # data = response.read()
-        # print(data)
+
         data=np.asarray(bytearray(response.read()),dtype="uint8")
         data = cv2.imdecode(data, cv2.IMREAD_COLOR)
-        # print(img1)
-        # filename = "random_name.jpg"
-    
-        # plt.imshow(data [:, :, :: -1] )
+
         try:
             result = DeepFace.analyze(data, actions = ['emotion'])
             emotion = result['dominant_emotion']
+            emotion_index=0
+            if emotion == 'angry':
+                emotion_index=  0.25
+            elif emotion == 'disgust':
+                 emotion_index=  0.3
+            elif emotion ==  'fear':
+                 emotion_index=  0.3
+            elif emotion ==  'happy':
+                 emotion_index=  0.6
+            elif emotion ==  'sad':
+                 emotion_index=  0.3
+            elif emotion == 'surprised':
+                 emotion_index=   0.6
+            else :  
+                 emotion_index=  0.9
+
+            print(emotion)
+            concentration_index = ( emotion_index * 2) / 4.5
+                               
+            if concentration_index > 0.65:
+                return " highly engaged!"
+            elif concentration_index > 0.25 and concentration_index <= 0.65:
+                return " engaged."
+            else:
+                return " not engaged!"
         except ValueError as e:
             print(repr(e))
             emotion = "camera off /student is not on the frame"
-        # if data=="":
-        # print("the camra is off")
-        #print(result['dominant_emotion'])
-        # with open(filename, "wb") as f:
-        #  f.write(data)
-    # except:
-    #     print('camera is off ')
-    # socketio.header("Access-Control-Allow-Origin", "*")
-    # print( "Content-Type: text/turtle")
-    # print( "Content-Location: mydata.ttl")
-    # print( "Access-Control-Allow-Origin: *")
-    print(emotion)
-    # socketio.emit('my response', {'data': emotion})
+
+   
+    
 
     return emotion
+
+# def emotionweights(self,emotion):
 
 
 

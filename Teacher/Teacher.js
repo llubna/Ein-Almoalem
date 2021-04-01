@@ -68,7 +68,7 @@ function startCall() {
             const channel = e.channel;
             channel.onmessage = event => {
 
-              $.bootstrapGrowl('Received in bootstrapGrowl : ' + event.data, {
+              $.bootstrapGrowl( event.data, {
                 type: 'info', // (null, 'info', 'error', 'success')
                 offset: {from: 'top', amount: 250}, // 'top', or 'bottom'
                 align: 'right', // ('left', 'right', or 'center')

@@ -38,6 +38,7 @@ let localStream
 let peerConn
 let username
 let dataChannel
+let StudentName
 let videoOption ={
     video: {
         frameRate: 24,
@@ -185,7 +186,8 @@ async function SendPhoto(data){
     // dataChannel.open();
     // const dc = pc.createDataChannel("some label string");
     // wait for this to be open, e.g. by adding an event listener, then call send
-    dataChannel.send(result);
+    StudentName =document.getElementById("Student-Name").value
+    dataChannel.send(StudentName+":"+result);
     // let obj = {
     //     "message": msg,
     //     "timestamp": new Date()
@@ -226,10 +228,7 @@ function muteAudio() {
     localStream.getAudioTracks()[0].enabled = isAudio
 }
 
-function muteAudio() {
-    isAudio = !isAudio
-    localStream.getAudioTracks()[0].enabled = isAudio
-}
+
 let isVideo = true
 function muteVideo() {
     isVideo = !isVideo

@@ -2,6 +2,7 @@ const webSocket = new WebSocket("ws://localhost:3000")
 
 
 webSocket.onmessage = (event) => {
+    console.log(event)
     handleSignallingData(JSON.parse(event.data))
 }
 

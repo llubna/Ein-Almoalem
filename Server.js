@@ -10,10 +10,12 @@ server.listen(3000 , () => {
 const webSocket = new Socket({ httpServer: server })
 
 let users = []
+// var clients = []
 
 webSocket.on('request', (req) => {
     const connection = req.accept()
-
+    
+     
     connection.on('message', (message) => {
         const data = JSON.parse(message.utf8Data)
 
@@ -98,7 +100,15 @@ webSocket.on('request', (req) => {
             }
         })
     })
+    
+    // clients.push(connection)
+    // broadcast()
 })
+// function broadcast() {
+//     clients.forEach(e=>{
+// e.send("test broadcast")
+//     })
+// }
 
 function sendData(data, conn) {
     conn.send(JSON.stringify(data))

@@ -16,9 +16,9 @@
      <meta name="keywords" content="">
      <meta name="author" content="">
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
+<!-- 
      <link rel="stylesheet" href="../css/bootstrap.min.css">
-     <link rel="stylesheet" href="../css/font-awesome.min.css">
+     <link rel="stylesheet" href="../css/font-awesome.min.css"> -->
      <link rel="stylesheet" href="../css/aos.css">
      <link rel="stylesheet" href="../css/owl.carousel.min.css">
      <link rel="stylesheet" href="../css/owl.theme.default.min.css">
@@ -71,9 +71,15 @@
         </div>
     </nav> 
           </section> 
-            <section class="col-lg-8 mx-auto col-md-10 col-12" style="padding-top: 30%; text-align: center; padding-bottom: 30%;">
+          <!--<p style="text-align: center; color: cadetblue; margin-bottom: 50%;">Session information</p> -->
+          <!--<div style="background-image:url(../images/backgroundimage.png); padding:200px; margin:300px; background-repeat: no-repeat; background-size: 100% 75%;"> -->
+            <div style="border:5px solid rgb(7, 140, 150); margin-top: 30%; margin-bottom: 30%; margin-right: 20%; margin-left:20%; border-radius: 10px;" class="contact-form" data-aos="fade-up" data-aos-delay="500" role="form">
+              <br> <br> <br> 
+              
+            <section class="col-lg-8 mx-auto col-md-10 col-12" style="padding-top: 10%; text-align: center; padding-bottom: 20%;">
+             
     
-                <div class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
+                <div class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form" >
 
                       <div class="row">
                         <div class="col-lg-9 col-10" style="text-align: center;">
@@ -85,6 +91,7 @@
             <button id="submit-button" class="form-control" onclick="sendUsername()">Rejester session ID </button>
             <button id="submit-button" class="form-control" onclick="startCall()">Start session</button> </div> 
         </section>
+      </div>
             <section style="padding-bottom: 0%;">
 
             <footer class="site-footer">
@@ -122,23 +129,23 @@
            
            
                 <!-- SCRIPTS -->
-                <script src="../js/jquery.min.js"></script>
-                <script src="../js/bootstrap.min.js"></script>
+                <!-- <script src="../js/jquery.min.js"></script>
+                <script src="../js/bootstrap.min.js"></script>-->
                 <script src="../js/aos.js"></script>
                 <script src="../js/owl.carousel.min.js"></script>
                 <script src="../js/smoothscroll.js"></script>
-                <script src="../js/custom.js"></script>
+                <script src="../js/custom.js"></script> 
         </div>
         <div id="video-call-div">
             <video muted id="local-video" autoplay></video>
             <video id="remote-video" autoplay></video>
             <div class="call-action-div">
-                <button onclick="muteVideo()">Mute Video</button>
-                <button onclick="muteAudio()">Mute Audio</button>
-                <button id="start">Start Capture</button>&nbsp;<button id="stop">Stop Capture</button>
+                <button style="background-color:white ; border:1px solid white;" onclick="muteVideo()"><img src="../images/mute-video.png" width="40px" height="40px" alt="mute video"></button>
+                <button style="background-color:white ; border:1px solid white;" onclick="muteAudio()"><img src="../images/mute-audio.png" width="40px" height="40px" alt="mute audio"></button>
+                
             </div>
             <div id="Result-Section">
-            <h3>Result will appear here:</h3>
+            <h3 style="color: teal;">Face analysis result: </h3>
             </div>
         </div>
         

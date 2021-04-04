@@ -91,12 +91,7 @@ def analyze():
             emotion = "camera off /student is not on the frame"
 
    
-    
-
     return emotion
-
-# def emotionweights(self,emotion):
-
 
 
 if __name__ == "__main__":

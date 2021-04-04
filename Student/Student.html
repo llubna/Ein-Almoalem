@@ -59,7 +59,7 @@
    </div>
 </nav> 
      </section> 
-
+     <div style="border:5px solid rgb(7, 140, 150); margin-top: 30%; margin-bottom: 30%; margin-right: 20%; margin-left:20%; border-radius: 10px;" class="contact-form" data-aos="fade-up" data-aos-delay="500" role="form" >
      <section class="col-lg-8 mx-auto col-md-10 col-12" style="padding-top: 30%; text-align: center; padding-bottom: 30%;">
 
         <div class="contact-form" data-aos="fade-up" data-aos-delay="300" role="form">
@@ -68,19 +68,19 @@
                   <input placeholder="Enter your name..."
                   type="text"
                   id="Student-Name" class="form-control" /><br>
-                  <input placeholder="enter sesstion ID..."
+                  <input placeholder="Enter session ID..."
                     type="text"
                     id="username-input" class="form-control" /><br>
                     </div>
             </div>
             <div class="col-lg-5 mx-auto col-7" >
-                 <button id="submit-button" onclick="joinCall()" class="form-control">Join Call</button>
+                 <button id="submit-button" onclick="joinCall()" class="form-control">Join session</button>
             </div>
         </div> 
-
             </section>
+            </div>
 
-            <section class="project section-padding" style="padding-bottom: 0%;">
+            <section style="padding-bottom: 0%;">
                 <footer class="site-footer">
                     <div class="container">
                       <div class="row">
@@ -128,8 +128,8 @@
             <video muted id="local-video" autoplay></video>
             <video id="remote-video" autoplay></video>
             <div class="call-action-div">
-                <button onclick="muteVideo()">Mute Video</button>
-                <button onclick="muteAudio()">Mute Audio</button>   
+                <button style="background-color:white ; border:1px solid white;" onclick="muteVideo()"><img src="../images/mute-video.png" width="40px" height="40px" alt="mute video"></button>
+                <button style="background-color:white ; border:1px solid white;" onclick="muteAudio()"><img src="../images/mute-audio.png" width="40px" height="40px" alt="mute audio"></button>   
                 <!-- <div><button id="startbutton" >Take photo</button></div> -->
                 <canvas id="canvas"></canvas>
                 <div class="output">

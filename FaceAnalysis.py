@@ -37,18 +37,6 @@ CORS(app)
 # def test_disconnect():
 #     print('Client disconnected')
 
- # # 	Weights from Sharma et.al. (2019)
-        # Neutral	0.9
-        # Happy 	0.6
-        # Surprised	0.6
-        # Sad	    0.3
-
-        # Anger	    0.25
-        # Fearful	0.3
-        # 0: 'Angry', 1: 'Fear', 2: 'Happy', 3: 'Sad', 4: 'Surprised', 5: 'Neutral'}
-
-
-
 @app.route("/analyze", methods=["GET", "POST"])
 def analyze():
     print("analyzing image..")

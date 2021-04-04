@@ -65,6 +65,7 @@ function startCall() {
             ]
         }
        
+        
         peerConn = new RTCPeerConnection(configuration)
         dataChannel = peerConn.createDataChannel("datachannel")
         peerConn.addEventListener('datachannel', e => {

@@ -231,8 +231,6 @@ function muteAudio() {
     isAudio = !isAudio
     localStream.getAudioTracks()[0].enabled = isAudio
 }
-
-
 let isVideo = true
 function muteVideo() {
     isVideo = !isVideo

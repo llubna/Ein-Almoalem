@@ -210,3 +210,10 @@ function muteVideo() {
     isVideo = !isVideo
     localStream.getVideoTracks()[0].enabled = isVideo
 }
+function EndSession() {
+    peerConn.close()
+    peerConn = null
+    localStream.getAudioTracks()[0].enabled = isAudio
+    localStream.getVideoTracks()[0].enabled = isVideo
+    console.log("session ended successfully")
+}

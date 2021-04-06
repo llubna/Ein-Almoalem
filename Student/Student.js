@@ -110,7 +110,6 @@ function joinCall() {
     }, (error) => {
         console.log(error)
     })
-    // localStream.getTracks().forEach(track => peerConn.addTrack(track, localStream));
     setup();
 }
 
@@ -119,27 +118,22 @@ var video = document.getElementById('local-video');
 var photo = document.getElementById('photo');
 var width = 320; // We will scale the photo width to this
 var height = 0; 
+var interval;
 function setup(){
-    
 
     video.addEventListener('canplay', function(ev) {
         
         if (localStream) {
-            
             height = video.videoHeight / (video.videoWidth / width);
 
             if (isNaN(height)) {
                 height = width / (4 / 3);
             }
-
-          
         }
-        var interval;
         interval = setInterval(takepicture, 40000);
-        takepicture();
+        // takepicture();
         ev.preventDefault();
     }, false);
-    
 
     clearphoto();
 
@@ -178,53 +172,16 @@ async function SendPhoto(data){
         body: data,
 
     }).then(response => {
-        // let data =  response.text();
+   
         return response.text();
     })
     .catch(error => {
        console.log("error")
     });
 
-    // var dataChannel = peerConn.createDataChannel("datachannel");
-
-    // dataChannel.open();
-    // const dc = pc.createDataChannel("some label string");
-    // wait for this to be open, e.g. by adding an event listener, then call send
     StudentName =document.getElementById("Student-Name").value
     dataChannel.send(StudentName+" : "+result);
-    // let obj = {
-    //     "message": msg,
-    //     "timestamp": new Date()
-    //   }
-    //   dc.send(JSON.stringify(obj));
-    // // console.log(result)
-    // webSocket.send(result)
-    // sendData({
-    //     type: "result",
-    //     data: data
-    // }, connection)
-    // fetch("http://localhost:5500/TakeData", {
-    //     method: "POST", 
-    //     body: result,
-
-    // });
-     // module.exports = result; 
 }
-
-// export function sendResult() {
-//     const result= fetch("http://localhost:5000/analyze", {
-//         method: "POST", 
-//         body: data,
-
-//     }).then(response => {
-//         // let data =  response.text();
-//         return response.text();
-//     })
-//     .catch(error => {
-//        console.log("error")
-//     });
-//     return result;
-//   }
 
 let isAudio = true
 function muteAudio() {

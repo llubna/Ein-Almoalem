@@ -5,7 +5,6 @@ const webSocket = new WebSocket("ws://localhost:3000")
 webSocket.onmessage = (event) => {
     //console.log(event)
     handleSignallingData(JSON.parse(event.data))
-
 }
 
 function handleSignallingData(data) {
@@ -75,13 +74,13 @@ function startCall() {
             channel.onmessage = event => {
 
               $.bootstrapGrowl( event.data, {
-                type: 'info', // (null, 'info', 'error', 'success')
-                offset: {from: 'top', amount: 250}, // 'top', or 'bottom'
-                align: 'right', // ('left', 'right', or 'center')
-                //width: 250, // (integer, or 'auto')
+                type: 'info', 
+                offset: {from: 'top', amount: 250}, 
+                align: 'right', 
+                
                 delay: 20000,
                 allow_dismiss: true,
-                stackup_spacing: 10 // spacing between consecutively stacked growls.
+                stackup_spacing: 10 
               });
             
               console.log('received', event.data);}

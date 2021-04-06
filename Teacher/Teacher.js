@@ -43,7 +43,7 @@ function startCall() {
     document.getElementById("video-call-div")
     .style.display = "inline"
 
-    navigator.getUserMedia({
+    navigator.mediaDevices.getUserMedia({
         video: {
             frameRate: 24,
             width: {
@@ -52,7 +52,7 @@ function startCall() {
             aspectRatio: 1.33333
         },
         audio: true
-    }, (stream) => {
+    }).then(function(stream) {
         localStream = stream
         document.getElementById("local-video").srcObject = localStream
 
@@ -86,12 +86,11 @@ function startCall() {
               console.log('received', event.data);}
             })
               
-        peerConn.addStream(localStream)
-
-        peerConn.onaddstream = (e) => {
-            document.getElementById("remote-video")
-            .srcObject = e.stream
-        }
+        stream.getTracks().forEach((track) =>
+         peerConn.addTrack(track, stream));
+     
+        peerConn.ontrack = ({streams: [stream]}) =>
+         document.getElementById("remote-video").srcObject = stream;
 
         peerConn.onicecandidate = ((e) => {
             if (e.candidate == null)
@@ -103,9 +102,9 @@ function startCall() {
         })
 
         createAndSendOffer()
-    }, (error) => {
-        console.log(error)
-    })
+    }).catch (function(err){
+        console.log(err)
+    });
 
 
 }
@@ -138,63 +137,40 @@ var displayMediaOptions = {
   };
   
   // Set event listeners for the start and stop buttons
-  startElem.addEventListener("click", function(evt) {
-    startCapture();
-  }, false);
+//   startElem.addEventListener("click", function(evt) {
+//     startCapture();
+//   }, false);
   
-  stopElem.addEventListener("click", function(evt) {
-    stopCapture();
-  }, false);
+//   stopElem.addEventListener("click", function(evt) {
+//     stopCapture();
+//   }, false);
 
-//   function startCapture(){
+  function startCapture(){
 
     
-//     navigator.mediaDevices.getDisplayMedia({ cursor: true }).then(stream => {
-//         // const screenTrack = stream.getTracks()[0];
-//         muteVideo()
-//         localStream=stream
-//         peerConn.addStream(stream)
-//         console.log("here4")
- 
-//         // peerConn.onaddstream = (e) => {
-//         //     document.getElementById("remote-video")
-//         //     .srcObject = e.stream
-//         // }
+    navigator.mediaDevices.getDisplayMedia({ cursor: true }).then(function(stream) {
 
-//                 })
 
-// }
+       let videoTrack = stream.getVideoTracks()[0];
+       videoTrack.onended= function(){
+           stopShareScreen()
+       }
+       let sender =peerConn.getSenders().find(function(s) {
+           return s.track.kind==videoTrack.kind
+       })
+        sender.replaceTrack(videoTrack)
+    }).catch (function(err){
+        console.log(err)
+    });
+    }
+function stopShareScreen(){
 
-// import express from 'express'
-// const app = express()
-// const port = 3000
-
-// app.get('/TakeData', function(request, response) {
-//     console.log('GET /')
-//     var html = response.text()
-   
-// })
-// fetch("http://localhost:5500/", {
-//     method: "POST", 
-//     body: result,
-
-// });
-
-// xhttp.open("POST", "demo_post2.asp", true);
-// xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-// xhttp.send("fname=Henry&lname=Ford");
-
-// import {hello} from 'module'; // or './module'
-// let val = hello(); // val is "Hello";
-// $.getScript('./receiver/receiver.js',  SendPhoto()
-// {
-//     val data= 
-// });
-
-// webSocket.addEventListener('message' , function(event) {
-// console.log(event.data)
-
-// }) 
+    let videoTrack = localStream.getVideoTracks()[0];
+    var sender =peerConn.getSenders().find(function(s) {
+        return s.track.kind==videoTrack.kind
+    })
+     sender.replaceTrack(videoTrack)
+}
 
 
 

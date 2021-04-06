@@ -40,16 +40,6 @@ let peerConn
 let username
 let dataChannel
 let StudentName
-let videoOption ={
-    video: {
-        frameRate: 24,
-        width: {
-            min: 480, ideal: 720, max: 1280
-        },
-        aspectRatio: 1.33333
-    },
-    audio: true
-}
 
 function joinCall() {
 
@@ -61,7 +51,7 @@ function joinCall() {
     document.getElementById("video-call-div")
     .style.display = "inline"
 
-    navigator.getUserMedia({
+    navigator.mediaDevices.getUserMedia({
         video: {
             frameRate: 24,
             width: {
@@ -70,7 +60,7 @@ function joinCall() {
             aspectRatio: 1.33333
         },
         audio: true
-    }, (stream) => {
+    }).then( function (stream) {
         localStream = stream
         document.getElementById("local-video").srcObject = localStream
 
@@ -86,12 +76,10 @@ function joinCall() {
 
         peerConn = new RTCPeerConnection(configuration)
         dataChannel = peerConn.createDataChannel("datachannel");
-        peerConn.addStream(localStream)
-
-        peerConn.onaddstream = (e) => {
-            document.getElementById("remote-video")
-            .srcObject = e.stream
-        }
+        stream.getTracks().forEach((track) =>
+        peerConn.addTrack(track, stream));
+        peerConn.ontrack = ({streams: [stream]}) =>
+             document.getElementById("remote-video").srcObject = stream;
 
         peerConn.onicecandidate = ((e) => {
             if (e.candidate == null)
@@ -107,9 +95,9 @@ function joinCall() {
             type: "join_call"
         })
 
-    }, (error) => {
+    }).catch (function (error)  {
         console.log(error)
-    })
+    });
     setup();
 }
 
@@ -169,12 +157,15 @@ async function SendPhoto(data){
     dataChannel.send(StudentName+" : "+result);
 }
 
-let isAudio = true
+// let isAudio = true
+let isVideo = true
+
 function muteAudio() {
+    let isAudio = true
     isAudio = !isAudio
     localStream.getAudioTracks()[0].enabled = isAudio
 }
-let isVideo = true
+
 function muteVideo() {
     isVideo = !isVideo
     localStream.getVideoTracks()[0].enabled = isVideo

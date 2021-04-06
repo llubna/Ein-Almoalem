@@ -115,10 +115,10 @@ function joinCall() {
 
 var canvas = document.getElementById('canvas');
 var video = document.getElementById('local-video');
-var photo = document.getElementById('photo');
 var width = 320; // We will scale the photo width to this
 var height = 0; 
 var interval;
+
 function setup(){
 
     video.addEventListener('canplay', function(ev) {
@@ -130,25 +130,13 @@ function setup(){
                 height = width / (4 / 3);
             }
         }
-        interval = setInterval(takepicture, 40000);
-        // takepicture();
+        interval = setInterval(TakePhoto, 40000);
         ev.preventDefault();
     }, false);
 
-    clearphoto();
-
 }
 
-function clearphoto() {
-    
-    var context = canvas.getContext('2d');
-    context.fillRect(0, 0, canvas.width, canvas.height);
-
-    var data = canvas.toDataURL('image/png');
-    photo.setAttribute('src', data);
-}
-
-function takepicture() {
+function TakePhoto() {
     var context = canvas.getContext('2d');
     
     if (width && height) {
@@ -160,8 +148,6 @@ function takepicture() {
         SendPhoto(data)
 
        
-    } else {
-        clearphoto();
     }
 }
 

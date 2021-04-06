@@ -5,6 +5,8 @@
     "express": "^4.17.1",
     "rtcmulticonnection": "^3.7.0",
     "socket.io": "^3.1.2",
-    "webcam-easy": "^1.0.5"
+    "webcam-easy": "^1.0.5",
+    "webrtc": "^1.14.1",
+    "webrtc-adapter": "^7.7.1"
   }
 }

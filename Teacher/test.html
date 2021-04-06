@@ -1,0 +1,31 @@
+<script src="https://rtcmulticonnection.herokuapp.com/dist/RTCMultiConnection.min.js"></script>
+<script src="https://rtcmulticonnection.herokuapp.com/socket.io/socket.io.js"></script>
+<link rel="stylesheet" href="../style.css">
+<hr><button id="share-video">Share Video</button><hr>
+<div id="local-video" >
+
+
+</div>
+<script>
+var connection = new RTCMultiConnection();
+
+// this line is VERY_important
+connection.socketURL = 'https://rtcmulticonnection.herokuapp.com:443/';
+
+// if you want audio-only session
+document.getElementById("local-video").srcObject = connection.session = {
+    audio: true,
+    video: true
+};
+
+connection.openOrJoin('your-room-id');
+
+// document.getElementById('share-video').onclick = function() {
+//     this.disabled = true;
+//     connection.mediaConstraints.video = true;
+//     connection.addStream({
+//         video: true,
+//         oneway: true
+//     });
+// };
+</script>

@@ -25,9 +25,17 @@
     height: 100%;
     margin: 16x; 
     right: 0px;
+    border: 5px solid #008080;
+    /* border-radius: ; */
     background: #ffffff;
 }
-
+#Result{
+    text-align: center;
+    border: 3px solid #008080;
+    color:#ffffff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background: #008080;
+}
 /* End of Result felid */
 
 #remote-video {

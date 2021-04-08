@@ -16,31 +16,11 @@ import numpy as np
 app = Flask(__name__)
 CORS(app)
 
-# app.config['SECRET_KEY'] = 'some secret thing'
-# #socketio = SocketIO(app,cors_allowed_origins="*")
-# socketio = SocketIO(app)
-
-
-# @app.route("/", methods=["GET", "POST"])
-# def hello_world():
-#     return render_template("./sender.html")
-    
-# @socketio.on('message')
-# def handle_message(data):
-#     print('received message: ' + data)
-
-# @socketio.on('connect')
-# def test_connect():
-#     socketio.emit('my response', {'data': 'Connected'})
-
-# @socketio.on('disconnect')
-# def test_disconnect():
-#     print('Client disconnected')
 
 @app.route("/analyze", methods=["GET", "POST"])
 def analyze():
     print("analyzing image..")
-    # try:
+    
     with rq.urlopen(request.data.decode("utf8")) as response:
 
         data=np.asarray(bytearray(response.read()),dtype="uint8")
@@ -53,7 +33,7 @@ def analyze():
             if emotion == 'angry':
                 emotion_index=  0.25
             elif emotion == 'disgust':
-                 emotion_index=  0.3
+                 emotion_index=  0.2
             elif emotion ==  'fear':
                  emotion_index=  0.3
             elif emotion ==  'happy':

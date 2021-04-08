@@ -84,12 +84,11 @@
 
                       <div class="row">
                         <div class="col-lg-9 col-10" style="text-align: center;">
-                             <input placeholder="Enter session ID..." type="text" id="username-input" class="form-control" /><br>
-
+                             <p  id="sessionID" class="form-control" ></p><br>    
                              </div>
                       </div>
              <div class="col-lg-5 mx-auto col-7" >      
-            <button id="submit-button" class="form-control" onclick="sendUsername()"> Enter session ID </button>
+            <button id="submit-button" class="form-control" onclick="sendUsername()">Generate  ID</button>
             <button id="submit-button" class="form-control" onclick="startCall()">Start session</button> </div> 
         </section>
       </div>
@@ -130,8 +129,6 @@
            
            
                 <!-- SCRIPTS -->
-                <!-- <script src="../js/jquery.min.js"></script>
-                <script src="../js/bootstrap.min.js"></script>-->
                 <script src="../js/aos.js"></script>
                 <script src="../js/owl.carousel.min.js"></script>
                 <script src="../js/smoothscroll.js"></script>
@@ -141,6 +138,7 @@
             <video muted id="local-video" autoplay></video>
             <video id="remote-video" autoplay></video>
             <div class="call-action-div">
+                <audio id="Audio"> <source src="juntos-607.ogg" type="audio/ogg"></audio>
                 <button style="background-color:white ; border:1px solid white;" onclick="muteVideo()">Mute Video </button>
                 <button style="background-color:white ; border:1px solid white;" onclick="muteAudio()">Mute Audio</button>
                 <button style="background-color:white ; border:1px solid white;" onclick="startCapture()">Share Screen</button>
@@ -150,50 +148,11 @@
                 
             </div>
             <div id="Result-Section">
-            <h3 style="color: teal;">Face analysis result: </h3>
+            <h3  id="Result"> Face Analysis Message: </h3>
             </div>
         </div>
         
-        <!-- <div id="capture_shear">
-            <video muted id="local-video" autoplay></video>
-            <video id="remote-video" autoplay></video>
-            <div class="call-action-div">
-                <button onclick="muteVideo()">Mute Video</button>
-                <button onclick="muteAudio()">Mute Audio</button>
-                <button id="start">Start Capture</button>&nbsp;<button id="stop">Stop Capture</button>
-            </div> -->
         </div>
-        <script type="text/javascript" charset="utf-8">
-//          console.log("test");
-//             // var cors = require('cors')
-
-//             var connectionOptions =  {
-//             "force new connection" : true,
-//             "reconnectionAttempts": "Infinity", 
-//             "timeout" : 10000,                  
-//             "transports" : ["socket"],
-//             "Access-Control-Allow-Origin":"*"
-//         };
-//             // var socket = io();
-//             var socket = io("http://localhost:5000/" ,connectionOptions,
-//             // {
-// //                  extraHeaders: {
-// //                 Origin: "Access-Control-Allow-Origin:*"
-// //   }
-// );
-//             socket.on('connect', function () {
-//                 console.log("connected")
-//                 socket.emit('my event', { data: 'I\'m connected!' });
-//             });
-
-//         socket.on('my response', function(msg) {
-//              alert('Received: ' + msg.data)
-//             // $('#log').append('<p>Received: ' + msg.data + '</p>');
-//             console.log("connected");
-//             console.log(msg.data);
-//         });
-    
-        </script>
         <script src="./Teacher.js"></script>
     </body>
 

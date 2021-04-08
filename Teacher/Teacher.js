@@ -17,17 +17,36 @@ function handleSignallingData(data) {
     }
 }
 
-let username
+let SessionID
+var ID = "";
+function GenerateSessionID() {
+    
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  
+    for (var i = 0; i < 9; i++){
+      ID += possible.charAt(Math.floor(Math.random() * possible.length))
+
+      if(i==2||i==5)
+         ID += "-"
+
+    }
+      console.log(ID)
+      document.getElementById("sessionID").innerHTML = ID 
+ 
+      return ID
+    
+  }
+  
 function sendUsername() {
 
-    username = document.getElementById("username-input").value
+    SessionID = GenerateSessionID()
     sendData({
         type: "store_user"
     })
 }
 
 function sendData(data) {
-    data.username = username
+    data.username = SessionID
     webSocket.send(JSON.stringify(data))
 }
 
@@ -77,12 +96,11 @@ function startCall() {
                 type: 'info', 
                 offset: {from: 'top', amount: 250}, 
                 align: 'right', 
-                
                 delay: 20000,
                 allow_dismiss: true,
                 stackup_spacing: 10 
               });
-            
+              document.getElementById('Audio').play();
               console.log('received', event.data);}
             })
               
@@ -123,31 +141,11 @@ function createAndSendOffer() {
     })
 }
 
-/////here start capture
-const videoElem = document.getElementById("local-video");
-const startElem = document.getElementById("start");
-const stopElem = document.getElementById("stop");
-// Options for getDisplayMedia()
-
-var displayMediaOptions = {
-    video: {
-      cursor: "always"
-    },
-    audio: true
-  };
-  
-  // Set event listeners for the start and stop buttons
-//   startElem.addEventListener("click", function(evt) {
-//     startCapture();
-//   }, false);
-  
-//   stopElem.addEventListener("click", function(evt) {
-//     stopCapture();
-//   }, false);
-
+document.addEventListener("click", function(){
+    document.getElementById("demo").innerHTML = "Hello World";
+  });
   function startCapture(){
 
-    
     navigator.mediaDevices.getDisplayMedia({ cursor: true }).then(function(stream) {
 
 

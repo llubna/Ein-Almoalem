@@ -22,11 +22,11 @@ Ein-Almoalem is website designed to help the teacher during the online session b
  
  ### Instructions 
 
-after installing the requirements run the node js server in a separate file using command 
+after installing the requirements run the node js server in a separate file using command :
  ```
 node server.js 
  ```
-run the python server. 
+run the python server :
  ```
  python FaceAnalysis.py
   ```

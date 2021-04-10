@@ -51,7 +51,7 @@ def analyze():
             print(emotion)
             concentration_index =  (emotion_probability* emotion_index)*100
             print(concentration_index)                   
-            if concentration_index > 50:
+            if concentration_index >= 50:
                  emotion= " engaged."
             else:
                 emotion =" not engaged!"

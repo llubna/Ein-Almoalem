@@ -151,11 +151,13 @@ async function SendPhoto(data){
         return response.text();
     })
     .catch(error => {
-       console.log("error")
+       console.log(error)
     });
 
+    if (result==" not engaged!" || result== "camera off /student is not on the frame"){
     StudentName =document.getElementById("Student-Name").value
-    dataChannel.send(StudentName+" : "+result);
+    dataChannel.send(StudentName+" : "+result);}
+
 }
 
 // let isAudio = true

@@ -28,7 +28,10 @@ def analyze():
 
         try:
             result = DeepFace.analyze(data, actions = ['emotion'])
+            emotions = result['emotion']
             emotion = result['dominant_emotion']
+            emotion_probability= emotions[emotion]/100
+            print( emotion_probability)
             emotion_index=0
             if emotion == 'angry':
                 emotion_index=  0.25
@@ -46,14 +49,13 @@ def analyze():
                  emotion_index=  0.9
 
             print(emotion)
-            concentration_index = ( emotion_index * 2) / 4.5
-                               
-            if concentration_index > 0.65:
-                return " highly engaged!"
-            elif concentration_index > 0.25 and concentration_index <= 0.65:
-                return " engaged."
+            concentration_index =  (emotion_probability* emotion_index)*100
+            print(concentration_index)                   
+            if concentration_index > 50:
+                 emotion= " engaged."
             else:
-                return " not engaged!"
+                emotion =" not engaged!"
+
         except ValueError as e:
             print(repr(e))
             emotion = "camera off /student is not on the frame"

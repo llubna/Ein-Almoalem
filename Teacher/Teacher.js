@@ -1,5 +1,5 @@
 
-
+// const webSocket = new WebSocket("ws://192.168.100.241:3000")
 const webSocket = new WebSocket("ws://localhost:3000")
 // const socket = new socket("ws://localhost:5000")
 webSocket.onmessage = (event) => {
@@ -141,9 +141,6 @@ function createAndSendOffer() {
     })
 }
 
-document.addEventListener("click", function(){
-    document.getElementById("demo").innerHTML = "Hello World";
-  });
   function startCapture(){
 
     navigator.mediaDevices.getDisplayMedia({ cursor: true }).then(function(stream) {

@@ -91,7 +91,7 @@ function startCall() {
         peerConn.addEventListener('datachannel', e => {
             const channel = e.channel;
             channel.onmessage = event => {
-
+    
               $.bootstrapGrowl( event.data, {
                 type: 'info', 
                 offset: {from: 'top', amount: 250}, 

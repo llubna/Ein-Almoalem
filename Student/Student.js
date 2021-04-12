@@ -153,11 +153,17 @@ async function SendPhoto(data){
     .catch(error => {
        console.log(error)
     });
+    var ArbicResult 
+    if (result==" not engaged!"){
+        ArbicResult = "غير منتبه"
+    }
+    else if (result== "camera off /student is not on the frame"){
+        ArbicResult = "الكاميرا مغلقة او الطالب غير موجود"
 
-    if (result==" not engaged!" || result== "camera off /student is not on the frame"){
+    }
+    else {}
     StudentName =document.getElementById("Student-Name").value
-    dataChannel.send(StudentName+" : "+result);}
-
+    dataChannel.send(StudentName+" : "+ArbicResult);
 }
 
 // let isAudio = true

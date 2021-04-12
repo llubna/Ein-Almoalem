@@ -16,20 +16,20 @@ import numpy as np
 app = Flask(__name__)
 CORS(app)
 
-
+# python server: to GET student picture
 @app.route("/analyze", methods=["GET", "POST"])
 def analyze():
     print("analyzing image..")
     
     with rq.urlopen(request.data.decode("utf8")) as response:
-
+        # parepre imge to analysis
         data=np.asarray(bytearray(response.read()),dtype="uint8")
         data = cv2.imdecode(data, cv2.IMREAD_COLOR)
 
-        try:
+        try:   # analyze the emotion
             result = DeepFace.analyze(data, actions = ['emotion'])
             emotions = result['emotion']
-            emotion = result['dominant_emotion']
+            emotion = result['dominant_emotion'] 
             emotion_probability= emotions[emotion]/100
             print( emotion_probability)
             emotion_index=0
@@ -49,10 +49,11 @@ def analyze():
                  emotion_index=  0.9
 
             print(emotion)
+            # to calculate engaement
             concentration_index =  (emotion_probability* emotion_index)*100
             print(concentration_index)                   
             if concentration_index >= 50:
-                 emotion= " engaged."
+                 emotion= "engaged"
             else:
                 emotion =" not engaged!"
 
@@ -60,7 +61,7 @@ def analyze():
             print(repr(e))
             emotion = "camera off /student is not on the frame"
 
-   
+    # return the result  
     return emotion
 
 
